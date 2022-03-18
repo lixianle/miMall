@@ -15,52 +15,63 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
-    redirect: '/index',
-    children: [{
-      path: "/index",
-      name: "Index",
-      component: Index,
-    }, {
-      path: "/product/:id",
-      name: "Product",
-      component: Product,
-    }, {
-      path: "/detail",
-      name: "Detail",
-      component: Detail,
-    }]
-  }, {
+    redirect: "/index",
+    children: [
+      {
+        path: "/index",
+        name: "Index",
+        component: Index,
+      },
+      {
+        path: "/product/:id",
+        name: "Product",
+        component: Product,
+      },
+      {
+        path: "/detail",
+        name: "Detail",
+        component: Detail,
+      },
+    ],
+  },
+  {
     path: "/cart",
     name: "Cart",
     component: Cart,
-  }, {
+  },
+  {
     path: "/order",
     name: "Order",
     component: Order,
-    children: [{
-      path: 'list',
-      name: 'OrderList',
-      component: OrderList
-    }, {
-      path: 'comfirm',
-      name: 'OrderComfirm',
-      component: OrderComfirm
-    }, {
-      path: 'pay',
-      name: 'OrderPay',
-      component: OrderPay
-    }, {
-      path: 'alipay',
-      name: 'AliPay',
-      component: AliPay
-    }]
-  }
+    children: [
+      {
+        path: "list",
+        name: "OrderList",
+        component: OrderList,
+      },
+      {
+        path: "comfirm",
+        name: "OrderComfirm",
+        component: OrderComfirm,
+      },
+      {
+        path: "pay",
+        name: "OrderPay",
+        component: OrderPay,
+      },
+      {
+        path: "alipay",
+        name: "AliPay",
+        component: AliPay,
+      },
+    ],
+  },
   // {
   //   path: "/about",
   //   name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
+  // route level code-splitting
+  // this generates a separate chunk (about.[hash].js) for this route
+  // which is lazy-loaded when the route is visited.
   //   component: () =>
   //     import(/* webpackChunkName: "about" */ "../views/About.vue"),
   // },
