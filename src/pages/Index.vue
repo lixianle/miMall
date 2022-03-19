@@ -71,11 +71,49 @@
           <div class="swiper-button-next"></div>
         </swiper>
       </div>
-      <div class="ads-box"></div>
-      <div class="banner"></div>
-      <div class="product-box"></div>
+      <div class="ads-box">
+        <a
+          :href="'/#/product/' + item.id"
+          v-for="(item, index) in adsList"
+          :key="index"
+        >
+          <img :src="item.img" alt="" />
+        </a>
+      </div>
+      <div class="banner">
+        <a href="/#/product/30">
+          <img src="../imgs/banner-1.png" />
+        </a>
+      </div>
     </div>
-    <service-bar></service-bar>
+    <div class="product-box">
+      <div class="product-container">
+        <h2>手机</h2>
+        <div class="wrapper">
+          <div class="banner-left">
+            <a href="/#/product/35">
+              <img src="../imgs/mix-alpha.jpg" />
+            </a>
+          </div>
+          <div class="list-box">
+            <div class="list" v-for="(arr, i) in phoneList" :key="i">
+              <div class="item" v-for="(item, j) in arr" :key="j">
+                <span :class="{ 'new-pro': j % 2 == 0 }">新品</span>
+                <div class="item-img">
+                  <img :src="item.mainImage" />
+                </div>
+                <div class="item-info">
+                  <h3>{{ item.name }}</h3>
+                  <p>{{ item.subtitle }}</p>
+                  <p class="price">{{ item.price }}元</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="service"><service-bar></service-bar></div>
   </div>
 </template>
 
@@ -137,7 +175,45 @@ export default {
         [0, 0, 0, 0],
         [0, 0, 0, 0],
       ],
+      adsList: [
+        {
+          id: 33,
+          img: "../imgs/ads/ads-1.png",
+        },
+        {
+          id: 34,
+          img: "../imgs/ads/ads-2.jpg",
+        },
+        {
+          id: 35,
+          img: "../imgs/ads/ads-3.png",
+        },
+        {
+          id: 36,
+          img: "../imgs/ads/ads-4.jpg",
+        },
+      ],
+      phoneList: [],
     };
+  },
+  mounted() {
+    this.init();
+  },
+  methods: {
+    init() {
+      this.$axios
+        .get("/api/products", {
+          params: {
+            categoryId: 100012,
+            pageSize: 14,
+          },
+        })
+        .then((res) => {
+          res.list = res.list.slice(6, 14);
+          this.phoneList = [res.list.slice(0, 4), res.list.slice(4, 8)];
+          console.log(this.phoneList);
+        });
+    },
   },
 };
 </script>
@@ -146,9 +222,9 @@ export default {
 @import "../assets/scss/mixin.scss";
 @import "../assets/scss/config.scss";
 .index {
-  width: 1226px;
-  margin: auto;
   .container {
+    width: 1226px;
+    margin: auto;
     .swiper-box {
       .menu-box {
         position: absolute;
@@ -230,6 +306,121 @@ export default {
         }
       }
     }
+    .ads-box {
+      @include flex();
+      margin-top: 14px;
+      margin-bottom: 31px;
+      a {
+        width: 296px;
+        height: 167px;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+    .banner {
+      margin-bottom: 50px;
+      a {
+        display: block;
+        height: 130px;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+  .product-box {
+    background-color: $colorJ;
+    .product-container {
+      width: 1226px;
+      margin: 0 auto;
+      padding: 30px 0 50px 0;
+      h2 {
+        font-size: 22px;
+        height: 21px;
+        line-height: 21px;
+        color: $colorB;
+        margin-bottom: 20px;
+      }
+      .wrapper {
+        display: flex;
+        .banner-left {
+          margin-right: 16px;
+          img {
+            width: 224px;
+            height: 619px;
+          }
+        }
+        .list-box {
+          .list {
+            @include flex();
+            width: 986px;
+            margin-bottom: 14px;
+            &:last-child {
+              margin-bottom: 0;
+            }
+            .item {
+              width: 236px;
+              height: 302px;
+              background-color: $colorG;
+              text-align: center;
+              span {
+                display: inline-block;
+                width: 67px;
+                height: 24px;
+                line-height: 24px;
+                font-size: 14px;
+                &.new-pro {
+                  background-color: #7ecf68;
+                  color: #ffffff;
+                }
+                &.kill-pro {
+                  background-color: #e82626;
+                  color: #ffffff;
+                }
+              }
+              .item-img {
+                height: 195px;
+                img {
+                  width: 100%;
+                  height: 100%;
+                }
+              }
+              .item-info {
+                h3 {
+                  font-size: $fontJ;
+                  line-height: $fontJ;
+                  font-weight: bold;
+                  color: $colorB;
+                }
+                p {
+                  color: $colorD;
+                  line-height: 13px;
+                  margin: 6px auto 13px;
+                }
+                .price {
+                  font-size: $fontJ;
+                  font-weight: bold;
+                  color: #f20a0a;
+                  &::after {
+                    content: "";
+                    @include bgImg(22px, 22px, "../imgs/icon-cart-hover.png");
+                    vertical-align: middle;
+                    margin-left: 5px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .service {
+    width: 1226px;
+    margin: 0 auto;
   }
 }
 </style>
