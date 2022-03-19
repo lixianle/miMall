@@ -26,9 +26,13 @@ export default {
   font-size: 16px;
   li {
     display: inline-block;
-    width: 24.9%;
+    width: 25%;
     text-align: center;
     border-right: 1px solid #e5e5e5;
+    box-sizing: border-box;
+    &:last-child {
+      border-right: none;
+    }
     span {
       display: inline-block;
       width: 20px;
