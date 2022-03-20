@@ -105,7 +105,9 @@
                 <div class="item-info">
                   <h3>{{ item.name }}</h3>
                   <p>{{ item.subtitle }}</p>
-                  <p class="price">{{ item.price }}元</p>
+                  <p class="price" @click="addCart(item.id)">
+                    {{ item.price }}元
+                  </p>
                 </div>
               </div>
             </div>
@@ -114,6 +116,19 @@
       </div>
     </div>
     <div class="service"><service-bar></service-bar></div>
+    <modal
+      :showModal="showModal"
+      @submit="goToCart"
+      @cancel="showModal = false"
+      modalType="middle"
+      title="提示"
+      btnType="1"
+      sureText="查看购物车"
+    >
+      <template v-slot:body>
+        <p>商品添加成功！</p>
+      </template>
+    </modal>
   </div>
 </template>
 
@@ -126,12 +141,14 @@ import "swiper/modules/autoplay/autoplay.min.css";
 import "swiper/modules/pagination/pagination.min.css";
 import "swiper/modules/effect-cube/effect-cube.min.css";
 import ServiceBar from "../components/ServiceBar.vue";
+import Modal from "../components/Modal.vue";
 export default {
   name: "Index",
   components: {
     ServiceBar,
     Swiper,
     SwiperSlide,
+    Modal,
   },
   setup() {
     return {
@@ -194,6 +211,7 @@ export default {
         },
       ],
       phoneList: [],
+      showModal: false,
     };
   },
   mounted() {
@@ -213,6 +231,21 @@ export default {
           this.phoneList = [res.list.slice(0, 4), res.list.slice(4, 8)];
           console.log(this.phoneList);
         });
+    },
+    addCart(id) {
+      console.log(id);
+      this.showModal = true;
+      // this.$axios
+      //   .post("/api/carts", {
+      //     productId: id,
+      //     selected: true,
+      //   })
+      //   .then((res) => {
+      //     //
+      //   });
+    },
+    goToCart() {
+      this.$router.push("/cart");
     },
   },
 };
