@@ -15,7 +15,7 @@
           <a href="javascript:;" v-if="!userName">注册</a>
           <a href="javascript:;" class="my-cart" @click="goToCart">
             <span class="icon-cart"></span>
-            购物车
+            购物车({{ cartCount }})
           </a>
         </div>
       </div>
@@ -71,9 +71,16 @@ export default {
   name: "NavHeader",
   data() {
     return {
-      userName: "Jack",
       phoneList: [],
     };
+  },
+  computed: {
+    userName() {
+      return this.$store.state.username;
+    },
+    cartCount() {
+      return this.$store.state.cartCount;
+    },
   },
   mounted() {
     this.getProductList();
@@ -134,6 +141,7 @@ export default {
         background-color: #ff6600;
         text-align: center;
         color: #ffffff;
+        margin-right: 0;
         .icon-cart {
           @include bgImg(16px, 12px, "/imgs/icon-cart-checked.png");
           display: inline-block;

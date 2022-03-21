@@ -6,12 +6,16 @@ import store from "./store";
 
 axios.interceptors.response.use(function (response) {
   let res = response.data;
+  let path = location.hash;
   if (res.status == 0) {
     return res.data;
   } else if (res.status == 10) {
-    window.location.href = "/#/login";
+    if (path != "/#/login") {
+      window.location.href = "/#/login";
+    }
   } else {
     alert(res.msg);
+    return Promise.reject(res);
   }
 });
 const app = createApp(App);

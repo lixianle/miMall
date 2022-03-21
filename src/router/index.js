@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import Home from "../pages/Home.vue";
 import Index from "../pages/Index.vue";
+import Login from "../pages/Login.vue";
 import Product from "../pages/Product.vue";
 import Detail from "../pages/Detail.vue";
 import Cart from "../pages/Cart.vue";
@@ -38,6 +39,11 @@ const routes = [
     path: "/cart",
     name: "Cart",
     component: Cart,
+  },
+  {
+    path: "/login",
+    name: "Login",
+    component: Login,
   },
   {
     path: "/order",
