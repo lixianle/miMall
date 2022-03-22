@@ -1,15 +1,35 @@
 <template>
-  <div>
-    Product
+  <div class="product">
+    <product-param>
+      <template v-slot:buy>
+        <button class="btn">立即购买</button>
+      </template>
+    </product-param>
+    <div class="h">123</div>
+    <div class="h">123</div>
+    <div class="h">123</div>
+    <div class="h">123</div>
+    <div class="h">123</div>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'Product'
-  }
+import ProductParam from "../components/ProductParam";
+export default {
+  name: "Product",
+  components: {
+    ProductParam,
+  },
+};
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+.product {
+  .h {
+    height: 300px;
+  }
+  .btn {
+    margin-left: 10px;
+  }
+}
 </style>

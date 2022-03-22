@@ -5,14 +5,22 @@
 </template>
 
 <script>
+import { getUser, getCartCount } from "./api/index";
 export default {
   name: "App",
   mounted() {
-    this.getUser();
-    this.getCartCount();
+    if (document.cookie) {
+      getUser().then((res) => {
+        this.$store.dispatch("saveUserName", res.username);
+      });
+      getCartCount().then((res) => {
+        this.$store.dispatch("saveCartCount", res);
+      });
+    }
   },
   methods: {
-    getUser() {
+    // 全局$axios获取
+    /*getUser() {
       this.$axios.get("/api/user").then((res) => {
         this.$store.dispatch("saveUserName", res.username);
       });
@@ -21,7 +29,7 @@ export default {
       this.$axios.get("/api/carts/products/sum").then((res) => {
         this.$store.dispatch("saveCartCount", res);
       });
-    },
+    },*/
   },
 };
 </script>

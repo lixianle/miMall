@@ -41,6 +41,7 @@
 </template>
 
 <script>
+import { toLogin, toRegister } from "../api/index";
 export default {
   name: "Login",
   data() {
@@ -51,7 +52,8 @@ export default {
     };
   },
   methods: {
-    login() {
+    // 全局$axios登录
+    /*login() {
       let { username, password } = this;
       this.$axios
         .post("/api/user/login", {
@@ -64,8 +66,17 @@ export default {
           console.log("123");
           this.$router.push("/index");
         });
+    },*/
+    login() {
+      let { username, password } = this;
+      toLogin(username, password).then((res) => {
+        document.cookie = "userId=" + res.id;
+        this.$store.dispatch("saveUserName", res.username);
+        this.$router.push("/index");
+      });
     },
-    register() {
+    // 全局$axios注册
+    /*register() {
       this.$axios
         .post("/api/user/register", {
           username: "admin",
@@ -75,6 +86,9 @@ export default {
         .then(() => {
           alert("注册成功！");
         });
+    },*/
+    register() {
+      toRegister();
     },
   },
 };

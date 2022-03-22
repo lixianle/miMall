@@ -142,6 +142,7 @@ import "swiper/modules/pagination/pagination.min.css";
 import "swiper/modules/effect-cube/effect-cube.min.css";
 import ServiceBar from "../components/ServiceBar.vue";
 import Modal from "../components/Modal.vue";
+import { init } from "../api/index";
 export default {
   name: "Index",
   components: {
@@ -215,10 +216,14 @@ export default {
     };
   },
   mounted() {
-    this.init();
+    init().then((res) => {
+      res.list = res.list.slice(6, 14);
+      this.phoneList = [res.list.slice(0, 4), res.list.slice(4, 8)];
+    });
   },
   methods: {
-    init() {
+    // 全局$axios获取
+    /*init() {
       this.$axios
         .get("/api/products", {
           params: {
@@ -229,9 +234,9 @@ export default {
         .then((res) => {
           res.list = res.list.slice(6, 14);
           this.phoneList = [res.list.slice(0, 4), res.list.slice(4, 8)];
-          console.log(this.phoneList);
+          // console.log(this.phoneList);
         });
-    },
+    },*/
     addCart(id) {
       console.log(id);
       this.showModal = true;

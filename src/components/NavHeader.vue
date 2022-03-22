@@ -67,6 +67,7 @@
 </template>
 
 <script>
+import { getProductList } from "../api/index";
 export default {
   name: "NavHeader",
   data() {
@@ -83,7 +84,11 @@ export default {
     },
   },
   mounted() {
-    this.getProductList();
+    getProductList().then((res) => {
+      if (res.list) {
+        this.phoneList = res.list;
+      }
+    });
   },
   methods: {
     login() {
@@ -92,6 +97,8 @@ export default {
     goToCart() {
       this.$router.push("/cart");
     },
+    // 全局注册$axios
+    /*
     getProductList() {
       this.$axios
         .get("/api/products", {
@@ -105,12 +112,14 @@ export default {
             this.phoneList = res.list;
           }
         });
-      // .then((res) => {
-      //   if (res.list.length > 6) {
-      //     this.phoneList = res.list.slice(0, 6);
-      //   }
-      // });
+      //未设置pageSize = 6
+        // .then((res) => {
+        //   if (res.list.length > 6) {
+        //     this.phoneList = res.list.slice(0, 6);
+        //   }
+        // });
     },
+    */
     currency(val) {
       if (!val) return "0.00";
       return "￥" + parseFloat(val).toFixed(2) + "元";
