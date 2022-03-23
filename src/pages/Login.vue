@@ -35,15 +35,20 @@
       </div>
     </div>
     <div class="footer">
-      <div class="container">footer先不做</div>
+      <!-- <div class="container">footer先不做</div> -->
+      <nav-footer></nav-footer>
     </div>
   </div>
 </template>
 
 <script>
+import NavFooter from "../components/NavFooter.vue";
 import { toLogin, toRegister } from "../api/index";
 export default {
   name: "Login",
+  components: {
+    NavFooter,
+  },
   data() {
     return {
       username: "",
@@ -96,7 +101,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/scss/base.scss";
-
+@import "../assets/scss/config.scss";
 .login {
   & > .container {
     height: 113px;
@@ -116,17 +121,17 @@ export default {
         padding-right: 31px;
         width: 410px;
         height: 510px;
-        background-color: #ffffff;
+        background-color: $colorG;
         position: absolute;
         bottom: 29px;
         right: 0;
         h3 {
           line-height: 23px;
-          font-size: 24px;
+          font-size: $fontE;
           text-align: center;
           margin: 40px auto 49px;
           .checked {
-            color: #ff6600;
+            color: $colorA;
           }
           .sep-line {
             margin: 0 32px;
@@ -136,7 +141,7 @@ export default {
           display: inline-block;
           width: 348px;
           height: 50px;
-          border: 1px solid #e5e5e5;
+          border: 1px solid $colorH;
           margin-bottom: 20px;
           input {
             box-sizing: border-box;
@@ -151,20 +156,20 @@ export default {
             width: 100%;
             line-height: 50px;
             margin-top: 10px;
-            font-size: 16px;
+            font-size: $fontI;
           }
         }
         .tips {
           margin-top: 14px;
           display: flex;
           justify-content: space-between;
-          font-size: 14px;
+          font-size: $fontJ;
           cursor: pointer;
           .sms {
-            color: #ff6600;
+            color: $colorA;
           }
           .reg {
-            color: #999999;
+            color: $colorD;
             span {
               margin: 0 7px;
             }
@@ -173,8 +178,8 @@ export default {
       }
     }
   }
-  .footer {
-    height: 100px;
-  }
+  // .footer {
+  //   height: 100px;
+  // }
 }
 </style>

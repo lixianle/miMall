@@ -73,9 +73,9 @@
       </div>
       <div class="ads-box">
         <a
-          :href="'/#/product/' + item.id"
           v-for="(item, index) in adsList"
           :key="index"
+          :href="'/#/product/' + item.id"
         >
           <img :src="item.img" alt="" />
         </a>
@@ -118,12 +118,12 @@
     <div class="service"><service-bar></service-bar></div>
     <modal
       :showModal="showModal"
-      @submit="goToCart"
-      @cancel="showModal = false"
       modalType="middle"
       title="提示"
       btnType="1"
       sureText="查看购物车"
+      @submit="goToCart"
+      @cancel="showModal = false"
     >
       <template v-slot:body>
         <p>商品添加成功！</p>
@@ -259,10 +259,9 @@ export default {
 <style lang="scss" scoped>
 @import "../assets/scss/mixin.scss";
 @import "../assets/scss/config.scss";
+@import "../assets/scss/base.scss";
 .index {
   .container {
-    width: 1226px;
-    margin: auto;
     .swiper-box {
       .menu-box {
         position: absolute;
@@ -279,8 +278,8 @@ export default {
             a {
               display: block;
               position: relative;
-              font-size: 16px;
-              color: #ffffff;
+              font-size: $fontI;
+              color: $colorG;
               padding-left: 30px;
               &::after {
                 position: absolute;
@@ -317,7 +316,7 @@ export default {
                   padding-left: 23px;
                   a {
                     color: $colorB;
-                    font-size: 14px;
+                    font-size: $fontJ;
                     img {
                       vertical-align: middle;
                       width: 42px;
@@ -376,7 +375,7 @@ export default {
       margin: 0 auto;
       padding: 30px 0 50px 0;
       h2 {
-        font-size: 22px;
+        font-size: $fontF;
         height: 21px;
         line-height: 21px;
         color: $colorB;
@@ -409,7 +408,7 @@ export default {
                 width: 67px;
                 height: 24px;
                 line-height: 24px;
-                font-size: 14px;
+                font-size: $fontJ;
                 &.new-pro {
                   background-color: #7ecf68;
                   color: #ffffff;
@@ -455,10 +454,6 @@ export default {
         }
       }
     }
-  }
-  .service {
-    width: 1226px;
-    margin: 0 auto;
   }
 }
 </style>

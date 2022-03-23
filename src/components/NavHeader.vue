@@ -31,9 +31,9 @@
             <div class="children">
               <ul>
                 <li
-                  class="product"
                   v-for="(item, index) in phoneList"
                   :key="index"
+                  class="product"
                 >
                   <a :href="'/#/product/' + item.id" target="_blank">
                     <div class="pro-img">
@@ -136,7 +136,7 @@ export default {
   .nav-topbar {
     height: 39px;
     line-height: 39px;
-    background-color: #333333;
+    background-color: $colorB;
     color: #b0b0b0;
     .container {
       @include flex();
@@ -147,13 +147,13 @@ export default {
       }
       .my-cart {
         width: 110px;
-        background-color: #ff6600;
+        background-color: $colorA;
         text-align: center;
-        color: #ffffff;
+        color: $colorG;
         margin-right: 0;
         .icon-cart {
-          @include bgImg(16px, 12px, "/imgs/icon-cart-checked.png");
           display: inline-block;
+          @include bgImg(16px, 12px, "/imgs/icon-cart-checked.png");
           margin-right: 4px;
         }
       }
@@ -169,7 +169,7 @@ export default {
         overflow: hidden;
         width: 55px;
         height: 55px;
-        background-color: #ff6600;
+        background-color: $colorA;
         a {
           display: inline-block;
           width: 110px;
@@ -195,9 +195,9 @@ export default {
         width: 643px;
         .item-menu {
           display: inline-block;
-          color: #333333;
+          color: $colorB;
           font-weight: bold;
-          font-size: 16px;
+          font-size: $fontI;
           line-height: 112px;
           margin-right: 20px;
           .title {
@@ -226,11 +226,11 @@ export default {
               float: left;
               width: 16.6%;
               height: 220px;
-              font-size: 12px;
               line-height: 12px;
+              font-size: $fontK;
               text-align: center;
               z-index: 10;
-              background-color: #ffffff;
+              background-color: $colorG;
               &::before {
                 content: "";
                 position: absolute;

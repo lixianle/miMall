@@ -7,17 +7,15 @@
 </template>
 
 <script>
-import OrderHeader from '../components/OrderHeader.vue'
-import NavFooter from '../components/NavFooter.vue'
-  export default {
-    name: 'Order',
-    components: {
-      OrderHeader,
-      NavFooter
-    }
-  }
+import OrderHeader from "../components/OrderHeader.vue";
+import NavFooter from "../components/NavFooter.vue";
+export default {
+  name: "Order",
+  components: {
+    OrderHeader,
+    NavFooter,
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

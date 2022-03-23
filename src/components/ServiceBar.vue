@@ -20,37 +20,40 @@ export default {
 <style lang="scss" scoped>
 @import "../assets/scss/mixin.scss";
 @import "../assets/scss/config.scss";
+@import "../assets/scss/base.scss";
 .service {
   padding: 33px 0;
   color: $colorC;
   font-size: 16px;
-  li {
-    display: inline-block;
-    width: 25%;
-    text-align: center;
-    border-right: 1px solid #e5e5e5;
-    box-sizing: border-box;
-    &:last-child {
-      border-right: none;
-    }
-    span {
+  .container {
+    li {
       display: inline-block;
-      width: 20px;
-      height: 20px;
-      vertical-align: middle;
-      margin-right: 8px;
-    }
-    .icon-setting {
-      @include bgImg(20px, 20px, "../imgs/icon-setting.png");
-    }
-    .icon-7day {
-      @include bgImg(20px, 20px, "../imgs/icon-7day.png");
-    }
-    .icon-15day {
-      @include bgImg(20px, 20px, "../imgs/icon-15day.png");
-    }
-    .icon-post {
-      @include bgImg(20px, 20px, "../imgs/icon-post.png");
+      width: 25%;
+      text-align: center;
+      border-right: 1px solid #e5e5e5;
+      box-sizing: border-box;
+      &:last-child {
+        border-right: none;
+      }
+      span {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        vertical-align: middle;
+        margin-right: 8px;
+      }
+      .icon-setting {
+        @include bgImg(20px, 20px, "../imgs/icon-setting.png");
+      }
+      .icon-7day {
+        @include bgImg(20px, 20px, "../imgs/icon-7day.png");
+      }
+      .icon-15day {
+        @include bgImg(20px, 20px, "../imgs/icon-15day.png");
+      }
+      .icon-post {
+        @include bgImg(20px, 20px, "../imgs/icon-post.png");
+      }
     }
   }
 }
