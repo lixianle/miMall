@@ -47,7 +47,7 @@ export default {
     },
     addCart() {
       toAddCart(this.id, true).then((res = { cartProductVoList: 0 }) => {
-        this.$store.dispatch("saveCartCount", res.cartTotalQuantity);
+        this.$store.dispatch("saveCartCount", res.cartProductVoList.length);
         this.$router.push("/cart");
       });
     },
@@ -57,8 +57,9 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/scss/config.scss";
-@import "../assets/scss/base.scss";
 @import "../assets/scss/mixin.scss";
+@import "../assets/scss/base.scss";
+
 .detail {
   .wrapper {
     .container {

@@ -59,8 +59,9 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/scss/config.scss";
-@import "../assets/scss/base.scss";
 @import "../assets/scss/mixin.scss";
+@import "../assets/scss/base.scss";
+
 .product {
   .btn {
     margin-left: 10px;

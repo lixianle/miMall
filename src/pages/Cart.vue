@@ -1,6 +1,10 @@
 <template>
   <div>
-    <order-header></order-header>
+    <order-header title="我的购物车">
+      <template v-slot:tip>
+        <span>something</span>
+      </template>
+    </order-header>
     Cart
     <nav-footer></nav-footer>
   </div>
@@ -18,4 +22,4 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped></style>

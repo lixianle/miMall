@@ -129,9 +129,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/scss/base.scss";
-@import "../assets/scss/mixin.scss";
 @import "../assets/scss/config.scss";
+@import "../assets/scss/mixin.scss";
+@import "../assets/scss/base.scss";
+
 .header {
   .nav-topbar {
     height: 39px;
@@ -165,31 +166,6 @@ export default {
       z-index: 10;
       @include flex();
       height: 112px;
-      .header-logo {
-        display: inline-block;
-        overflow: hidden;
-        width: 55px;
-        height: 55px;
-        background-color: $colorA;
-        a {
-          display: inline-block;
-          width: 110px;
-          height: 55px;
-          &::before {
-            content: "";
-            @include bgImg(55px, 55px, "/imgs/mi-logo.png", 55px);
-            transition: margin 0.2s;
-          }
-          &::after {
-            content: "";
-            @include bgImg(55px, 55px, "/imgs/mi-home.png", 55px);
-          }
-          &:hover::before {
-            margin-left: -55px;
-            transition: margin 0.2s;
-          }
-        }
-      }
       .header-menu {
         display: inline-block;
         padding-left: 200px;
