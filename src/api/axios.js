@@ -17,6 +17,7 @@ $axios.interceptors.response.use(function (response) {
     if (path != "/#/login") {
       window.location.href = "/#/login";
     }
+    return Promise.reject(res);
   } else {
     alert(res.msg);
     return Promise.reject(res);

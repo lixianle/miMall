@@ -162,6 +162,7 @@ export default {
   .nav-header {
     .container {
       position: relative;
+      z-index: 10;
       @include flex();
       height: 112px;
       .header-logo {

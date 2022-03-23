@@ -115,7 +115,7 @@
         </div>
       </div>
     </div>
-    <div class="service"><service-bar></service-bar></div>
+    <div><service-bar></service-bar></div>
     <modal
       :showModal="showModal"
       modalType="middle"
@@ -142,7 +142,7 @@ import "swiper/modules/pagination/pagination.min.css";
 import "swiper/modules/effect-cube/effect-cube.min.css";
 import ServiceBar from "../components/ServiceBar.vue";
 import Modal from "../components/Modal.vue";
-import { init } from "../api/index";
+import { init, toAddCart } from "../api/index";
 export default {
   name: "Index",
   components: {
@@ -238,16 +238,14 @@ export default {
         });
     },*/
     addCart(id) {
-      console.log(id);
-      this.showModal = true;
-      // this.$axios
-      //   .post("/api/carts", {
-      //     productId: id,
-      //     selected: true,
-      //   })
-      //   .then((res) => {
-      //     //
-      //   });
+      toAddCart(id, true)
+        .then((res) => {
+          this.showModal = true;
+          this.$store.dispatch("saveCartCount", res.cartTotalQuantity);
+        })
+        .catch(() => {
+          this.showModal = true;
+        });
     },
     goToCart() {
       this.$router.push("/cart");

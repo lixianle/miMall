@@ -44,3 +44,21 @@ export function getUser() {
 export function getCartCount() {
   return $axios.get("/carts/products/sum");
 }
+
+// Product 获取商品信息
+export function getProductInfo(id) {
+  return $axios.get(`/products/${id}`);
+}
+
+// Detail加购物车
+export function toAddCart(id, selected) {
+  return $axios.post("/carts", {
+    productId: id,
+    selected: selected,
+  });
+}
+
+// test用
+export function test() {
+  return $axios.get("/test");
+}
