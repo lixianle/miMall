@@ -58,6 +58,28 @@ export function toAddCart(id, selected) {
   });
 }
 
+// Cart获取购物车列表
+export function getCartList() {
+  return $axios.get("/carts");
+}
+
+// Cart获取是否全选
+export function toggleGetCartList(url) {
+  return $axios.put(url);
+}
+
+// Cart获取+ , -,及商品是否选中后购物车列表
+export function toUpdateCart(id, quantity, selected) {
+  return $axios.put(`/carts/${id}`, {
+    quantity,
+    selected,
+  });
+}
+
+// Cart删除商品
+export function toDelProduct(id) {
+  return $axios.delete(`/carts/${id}`);
+}
 // test用
 export function test() {
   return $axios.get("/test");

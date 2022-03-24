@@ -8,22 +8,26 @@
         <h2>{{ title }}<slot name="tip"></slot></h2>
       </div>
       <div class="username fr">
-        <a href="javascript:;">jack</a>
+        <a href="javascript:;">{{ username }}</a>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   name: "OrderHeader",
   props: {
     title: String,
   },
+  computed: {
+    ...mapState(["username"]),
+  },
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "../assets/scss/config.scss";
 @import "../assets/scss/mixin.scss";
 @import "../assets/scss/base.scss";
@@ -40,12 +44,12 @@ export default {
     margin-left: 54px;
     font-size: $fontC;
     color: $colorB;
-    span {
-      margin-left: 17px;
-      font-size: $fontJ;
-      color: $colorD;
-      font-weight: 200;
-    }
+    // span {
+    //   margin-left: 17px;
+    //   font-size: $fontJ;
+    //   color: $colorD;
+    //   font-weight: 200;
+    // }
   }
   .username {
     a {
