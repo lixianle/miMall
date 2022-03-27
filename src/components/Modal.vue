@@ -33,9 +33,12 @@
             <a href="javascript:;" class="btn" @click="$emit('submit')">{{
               sureText
             }}</a>
-            <a href="javascript:;" class="btn" @click="$emit('cancel')">{{
-              cancelText
-            }}</a>
+            <a
+              href="javascript:;"
+              class="btn btn-default"
+              @click="$emit('cancel')"
+              >{{ cancelText }}</a
+            >
           </div>
         </div>
       </div>

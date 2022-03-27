@@ -58,7 +58,7 @@ export function toAddCart(id, selected) {
   });
 }
 
-// Cart获取购物车列表
+// Cart,OrderComfirm获取购物车列表
 export function getCartList() {
   return $axios.get("/carts");
 }
@@ -80,6 +80,53 @@ export function toUpdateCart(id, quantity, selected) {
 export function toDelProduct(id) {
   return $axios.delete(`/carts/${id}`);
 }
+
+// OrderComfirm获取地址列表
+export function getAddressList() {
+  return $axios.get("/shippings");
+}
+
+// OrderComfirm地址新增，编辑，删除
+export function sendAction(method, url, params) {
+  return $axios({
+    method: method,
+    url: url,
+    data: params,
+  });
+}
+
+// OrderComfirm提交订单
+export function toOrderSubmit(id) {
+  return $axios.post("/orders", {
+    shippingId: id,
+  });
+}
+
+// OrderPay获取订单详情
+export function getOrderDetail(orderNo) {
+  return $axios.get(`/orders/${orderNo}`);
+}
+
+// OrderPay获取订单详情(同上)
+// export function getOrderStatus(orderNo) {
+//   return $axios.get(`/orders/${orderNo}`);
+// }
+
+// AliPay提交支付
+export function paySubmit(orderId, payType) {
+  return $axios.post("/pay", {
+    orderId: orderId,
+    orderName: "xiaomi",
+    amount: 0.01,
+    payType: payType,
+  });
+}
+
+// OrderList获取订单列表
+export function getOrderList() {
+  return $axios.get("/orders");
+}
+
 // test用
 export function test() {
   return $axios.get("/test");

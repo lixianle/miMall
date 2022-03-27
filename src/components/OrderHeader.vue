@@ -42,8 +42,10 @@ export default {
   }
   .title {
     margin-left: 54px;
-    font-size: $fontC;
-    color: $colorB;
+    h2 {
+      font-size: $fontC;
+      color: $colorB;
+    }
     // span {
     //   margin-left: 17px;
     //   font-size: $fontJ;

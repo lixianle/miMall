@@ -12,7 +12,6 @@
         <div class="cart-box">
           <ul class="cart-item-head">
             <li class="col-1">
-              <!-- 双击后内容被选中，待解决 -->
               <span
                 class="checkbox"
                 :class="{ checked: allChecked }"
@@ -201,6 +200,7 @@ export default {
         display: flex;
         height: 79px;
         line-height: 79px;
+        user-select: none;
         .col-1 {
           flex: 1;
         }
